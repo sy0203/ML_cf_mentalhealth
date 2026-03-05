@@ -23,6 +23,8 @@
 
 This project employs machine learning models to classify online text posts into four mental health categories: Suicidal, Depression, Anxiety, and Normal.
 
+---
+
 ## Problem Definition
 
 **Objective**: Given a text post x, predict its mental health category y  {Suicidal, Depression, Anxiety, Normal}
@@ -30,6 +32,18 @@ This project employs machine learning models to classify online text posts into 
 **Motivation**: Mental health signals often appear in online text communication. Automated text classification can assist in identifying patterns associated with psychological distress and may support research in mental health monitoring.
 
 **Important Disclaimer**: The dataset labels represent forum-based annotations rather than clinical diagnoses, meaning the model predicts text patterns associated with mental health discussions, not clinical diagnosis.
+
+---
+
+## Data Description
+
+| Class | Description |
+|----------|----------------|
+| **Suicidal** | Expressing suicidal thoughts |
+| **Depression** | describing depressive symptomse |
+| **Anxiety** | Expressing worry or panic |
+| **Normal** | Non-mental-health related posts |
+
 
 
 
