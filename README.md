@@ -89,12 +89,12 @@ This project employs machine learning models to classify online text posts into 
 ---
 
 # Modeling Approach
-**Baseline Models**
-- Logistic Regression
-- Support Vector Machine
+### Baseline Models
+**1. Logistic Regression**
+**2. Support Vector Machine**
 
-**Advanced Models**
-- Transformer-based models such as BERT or DistilBERT.
+### Advanced Models
+**3. Transformer-based models such as BERT or DistilBERT**
 
 ---
 
@@ -108,7 +108,7 @@ This project employs machine learning models to classify online text posts into 
 
 ## Evaluation Framework
 
-**Key Metrics**
+### Key Metrics
 | Metric | Purpose |
 |----------|----------------|
 | Accruacy | Overall correctness |
@@ -116,5 +116,65 @@ This project employs machine learning models to classify online text posts into 
 | Recall | Detect true cases |
 | F1 score | Balance precision and recall |
 
+---
 
+## Performance Summary
+
+Figures, tables, justification of the best chosen model
+
+---
+
+## Error Analysis and Interpretation
+
+---
+
+## Limitations and Future Work
+### Limitations
+- Labels are not clinical diagnoses
+- Dataset may contain labeling noise
+- Users from online platform (i.e. Reddit) may not represent general population
+- Model predictions should not be used for medical decisions
+
+### Potential Improvements
+- Transformer models
+- Larger datasets
+- Context-aware models
+- User-level conversation modeling
+- Fairness and bias analysis
+
+---
+
+## How It Can Be Used
+
+### For Modeling Experts
+- **Feature Engineering**: Extract linguistic signals such as word frequencies, sentiment markers, punctuation patterns, and text length as model features.
+- **Model Training**: Train supervised classification models (i.e., logistic regression, SVM, or transformer-based models) to predict mental health categories from text.
+- **Performance Benchmarking**: Compare alternative models using macro F1 score and per-class recall to ensure balanced performance across categories.
+- **Model Interpretation**: Analyze feature importance or attention patterns to identify which linguistic signals contribute most strongly to predictions.
+  
+### For Platform Moderators and Safety Teams
+- **Content Triage**: Flag posts predicted as Suicidal or high-risk categories for human review and moderation.
+- **Early Warning Signals**: Identify posts that may indicate psychological distress and prioritize them for support interventions.
+- **Moderator Assistance**: Provide automated classification scores to help moderators quickly identify potentially concerning content.
+- **Escalation Workflow**: Integrate model predictions into moderation pipelines to guide manual review and support actions.
+  
+### For Researchers and Mental Health Analysts
+- **Language Pattern Analysis**: Study how linguistic features differ across suicidal, depression, anxiety, and normal posts.
+- **Large-Scale Text Analysis**: Analyze thousands of posts to identify trends in mental health discussions across online communities.
+- **Trend Monitoring**: Track changes in mental health–related language patterns over time or during major societal events.
+- **Behavioral Insights**: Examine how emotional tone, vocabulary, and writing style correlate with different mental health states.
+
+### For Data Scientists and NLP Practitioners**
+- **Benchmark Dataset**: Use the dataset to evaluate new NLP classification methods for emotionally sensitive text.
+- **Model Comparison**: Test different architectures such as TF-IDF models, neural networks, and transformer-based models.
+- **Explainability Research**: Apply interpretability methods (i.e., SHAP or attention analysis) to understand model decisions.
+- **Class Imbalance Strategies**: Experiment with sampling techniques, class weighting, and threshold tuning for imbalanced datasets.
+---
+
+## References
+- Kaggle. (2026). Classification of Mental Health Status Dataset. Retrieved from https://www.kaggle.com/competitions/classification-of-mental-health-status/data
+- Relevant research papers
+- Any libraries used
+
+---
 
