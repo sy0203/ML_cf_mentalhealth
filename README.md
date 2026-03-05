@@ -70,7 +70,7 @@ Each record contains:
 | Anxiety | 3,394 | 8.2% |
 | Normal | 16,281 | 39.5% |
 
-The dataset shows class imbalance, with Anxiety class being the smallest category.
+The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
 ---
 
