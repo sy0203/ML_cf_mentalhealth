@@ -36,6 +36,11 @@ This project employs machine learning models to classify online text posts into 
 ---
 
 ## Data Description
+### Data Structure
+| File | Description |
+|----------|---------------------|
+| **train.csv** | Labeled dataset used for model training |
+| **test.csv** | Unlabeled dataset used for model predictione |
 
 | Class | Description |
 |----------|----------------|
