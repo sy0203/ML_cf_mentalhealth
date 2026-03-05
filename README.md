@@ -60,9 +60,12 @@ Each record contains:
 ### Data Statistics
 - **Training set**: 41,174 labeled posts
 - **Test set**: 8,436 posts for prediction
-- Text length varies significantly
 
-### Class Distribution (Training Data)
+---
+
+## Data Exploration
+
+**Class Distribution**
 | Class | Count | Percentage |
 |----------|---------|--------|
 | Suicidal | 9,102 | 22.1% |
@@ -72,15 +75,12 @@ Each record contains:
 
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
----
-
-## Data Exploration
-
-**Class Distribution**
-- Check whether some labels dominate.
-
 **Text Length Analysis**
-- Average word counts per category.
+- Some posts consits of only a few words, while otehr contain long paragraphs.
+- The **average post length** is approximately 384 characters.
+- Extremely long posts can exceed **20,000** characters
+  
+This variation suggests that models must handle both short expressions of emotion and long narrative descriptions of mental health experiences.
 
 **Word Frequency Patterns**
 - suicidal posts contain words like die, hopeless, end
