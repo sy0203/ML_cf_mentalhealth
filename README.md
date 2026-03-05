@@ -61,7 +61,6 @@ Each record contains:
 - **Training set**: 41,174 labeled posts
 - **Test set**: 8,436 posts for prediction
 - Text length varies significantly
-- Class imbalance likely present
 
 ### Class Distribution (Training Data)
 | Class | Count |
@@ -70,6 +69,8 @@ Each record contains:
 | Depression | 12,397 |
 | Anxiety | 3,394 |
 | Normal | 16,281 |
+
+The dataset shows class imbalance, with Anxiety class being the smallest category.
 
 ---
 
