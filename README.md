@@ -27,7 +27,7 @@ This project employs machine learning models to classify online text posts into 
 
 ## Problem Definition
 
-**Objective**: Given a text post x, predict its mental health category y  {Suicidal, Depression, Anxiety, Normal}
+**Objective**: Given a text post x, predict its mental health category y &isin; {Suicidal, Depression, Anxiety, Normal}
 
 **Motivation**: Mental health signals often appear in online text communication. Automated text classification can assist in identifying patterns associated with psychological distress and may support research in mental health monitoring.
 
@@ -46,7 +46,7 @@ This project employs machine learning models to classify online text posts into 
 
 **Data Characteristics**
 - ~40,000 samples
-- Eext length varies significantly
+- Text length varies significantly
 - Class imbalance likely present
 
 ---
