@@ -68,7 +68,7 @@ Each record contains:
 ## Data Exploration
 
 ### Class Distribution
-| Class | Count | Percentage |
+| Class | Label Count | Percentage |
 |----------|---------|--------|
 | Suicidal | 9,102 | 22.1% |
 | Depression | 12,397 | 30.1% |
@@ -77,12 +77,15 @@ Each record contains:
 
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
-### Text Length Analysis
-- Some posts consits of only a few words, while otehr contain long paragraphs.
-- The **average post length** is approximately 384 characters.
-- Extremely long posts can exceed **20,000** characters
-  
-This variation suggests that models must handle both short expressions of emotion and long narrative descriptions of mental health experiences.
+### Average Text Length
+| Class | Average Word Count |
+|----------|---------|
+| Suicidal | . |
+| Depression | . |
+| Anxiety | . |
+| Normal | . |
+
+Some posts consits of only a few words, while otehr contain long paragraphs. This variation suggests that models must handle both short expressions of emotion and long narrative descriptions of mental health experiences.
 
 ### Word Frequency Patterns
 
