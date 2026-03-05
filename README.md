@@ -90,15 +90,12 @@ This project employs machine learning models to classify online text posts into 
 
 # Modeling Approach
 ### Baseline Models
-
-**1. Logistic Regression**
-
-**2. Support Vector Machine**
+- **Logistic Regression**
+- **Support Vector Machine**
 
 ### Advanced Models
-
-**3. Transformer-based models such as BERT or DistilBERT**
-
+- **Transformer-based models such as BERT or DistilBERT**
+  
 ---
 
 ## Model Training Procedure
