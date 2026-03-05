@@ -65,7 +65,7 @@ Each record contains:
 
 ## Data Exploration
 
-**Class Distribution**
+### Class Distribution
 | Class | Count | Percentage |
 |----------|---------|--------|
 | Suicidal | 9,102 | 22.1% |
@@ -75,20 +75,26 @@ Each record contains:
 
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
-**Text Length Analysis**
+### Text Length Analysis
 - Some posts consits of only a few words, while otehr contain long paragraphs.
 - The **average post length** is approximately 384 characters.
 - Extremely long posts can exceed **20,000** characters
   
 This variation suggests that models must handle both short expressions of emotion and long narrative descriptions of mental health experiences.
 
-**Word Frequency Patterns**
-- suicidal posts contain words like die, hopeless, end
-- anxiety posts contain worry, panic, afraid
+### Word Frequency Patterns
 
-**Optional Visualization**
-- Word clouds
-- t-SNE embeddings of text vectors
+Preliminary exploration of word frequencies reveals distinct linguistic patterns across categories.
+- **Suicidal posts**: words such as *die, hopeless, end*
+- **Depression posts**: words such as *tired, empty, worthless, alone*
+- **Anxiety posts**: words such as *worry, panic, afraid, nervous*
+- **Normal posts**: broader conversational vocabularies unrelated to emotional distress
+
+These patterns suggest that linguistic features may help models distinguish between mental health categories.
+
+### Visualization on Word Frequency Patterns (working on it)
+- Word clouds (corresponding to the group of words listed above per category)
+- t-SNE embeddings of text vectors (i heard this is for unsupervised but i will look into it)
 
 ---
 
