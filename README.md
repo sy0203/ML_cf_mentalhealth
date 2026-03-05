@@ -44,6 +44,77 @@ This project employs machine learning models to classify online text posts into 
 | **Anxiety** | Expressing worry or panic |
 | **Normal** | Non-mental-health related posts |
 
+**Data Characteristics**
+- ~40,000 samples
+- Eext length varies significantly
+- Class imbalance likely present
+
+---
+
+## Data Exploration
+
+**Class Distribution**
+- Check whether some labels dominate.
+
+**Text Length Analysis**
+- Average word counts per category.
+
+**Word Frequency Patterns**
+- suicidal posts contain words like die, hopeless, end
+- anxiety posts contain worry, panic, afraid
+
+**Optional Visualization**
+- Word clouds
+- t-SNE embeddings of text vectors
+
+---
+
+## Text Preprocessing and Feature Engineering
+
+**Preprocessing steps**
+- lowercasing text
+- removing URLs
+- tokenization
+- optional stopword removal
+
+**Feature representation**
+- TF-IDF: Converts text into sparse vectors representing word importance.
+- Embeddings: Sentence embeddings or transformer outputs capture semantic meaning.
+
+**Additional linguistic features**
+- punctuation counts
+- post length
+- sentiment score
+
+---
+
+# Modeling Approach
+**Baseline Models**
+- Logistic Regression
+- Support Vector Machine
+
+**Advanced Models**
+- Transformer-based models such as BERT or DistilBERT.
+
+---
+
+## Model Training Procedure
+- Validation split
+- Cross-validation
+- Hyperparameter tuning using grid search
+- Class weighting
+
+---
+
+## Evaluation Framework
+
+**Key Metrics**
+| Metric | Purpose |
+|----------|----------------|
+| Accruacy | Overall correctness |
+| Precision | Control false positives |
+| Recall | Detect true cases |
+| F1 score | Balance precision and recall |
 
 
 
