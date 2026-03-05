@@ -40,19 +40,36 @@ This project employs machine learning models to classify online text posts into 
 | File | Description |
 |----------|---------------------|
 | **train.csv** | Labeled dataset used for model training |
-| **test.csv** | Unlabeled dataset used for model predictione |
+| **test.csv** | Unlabeled dataset used for model prediction |
 
+Each record contains:
+| Column | Description |
+|----------|----------------|
+| *id* | Unique identifier for the post |
+| *text* | Raw text content of the post |
+| *status* | Mental health label (training set only) |
+
+### Label Categories
 | Class | Description |
 |----------|----------------|
-| **Suicidal** | Expressing suicidal thoughts |
-| **Depression** | describing depressive symptomse |
-| **Anxiety** | Expressing worry or panic |
-| **Normal** | Non-mental-health related posts |
+| **Suicidal** | Posts expressing suicidal thoughts |
+| **Depression** | Posts describing depressive symptoms |
+| **Anxiety** | Posts expressing worry or panic |
+| **Normal** | Posts not related to mental health distress |
 
-**Data Characteristics**
-- ~40,000 samples
+### Data Statistics
+- **Training set**: 41,174 labeled posts
+- **Test set**: 8,436 posts for prediction
 - Text length varies significantly
 - Class imbalance likely present
+
+### Class Distribution (Training Data)
+| Class | Count |
+|----------|---------|
+| Suicidal | 9,102 |
+| Depression | 12,397 |
+| Anxiety | 3,394 |
+| Normal | 16,281 |
 
 ---
 
