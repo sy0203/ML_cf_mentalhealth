@@ -63,12 +63,12 @@ Each record contains:
 - Text length varies significantly
 
 ### Class Distribution (Training Data)
-| Class | Count |
-|----------|---------|
-| Suicidal | 9,102 |
-| Depression | 12,397 |
-| Anxiety | 3,394 |
-| Normal | 16,281 |
+| Class | Count | Percentage |
+|----------|---------|--------|
+| Suicidal | 9,102 | 22.1% |
+| Depression | 12,397 | 30.1% |
+| Anxiety | 3,394 | 8.2% |
+| Normal | 16,281 | 39.5% |
 
 The dataset shows class imbalance, with Anxiety class being the smallest category.
 
