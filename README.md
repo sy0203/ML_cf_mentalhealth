@@ -90,10 +90,10 @@ The dataset shows *class imbalance*, with Anxiety class being the smallest categ
 </p>
 
 Prominenet words include per category:
-- **Suicidal posts**: *die, kill, fuck, life, time*
-- **Depression posts**: *feel, know, time, life, people*
-- **Anxiety posts**: *feel, know, time, people, panic*
-- **Normal posts**: *mom, school, work, friend, day*
+- **Suicidal posts**: *die, never, kill, fuck*
+- **Depression posts**: *depression, hate, anyone, better*
+- **Anxiety posts**: *anxiety, anxious, always, right*
+- **Normal posts**: *mom, now, school, love, first*
 
 Word clouds were generated for each mental health category to visualize frequently occurring words in the dataset. Suicidal posts prominently contain terms related to death and distress, while depression and anxiety posts emphasize emotional and cognitive expressions such as “feel” and “know.” In contrast, normal posts tend to include more neutral everyday topics such as school, work, and family. These observations suggest that linguistic differences exist across categories, supporting the feasibility of using text-based machine learning methods for classification.
 
