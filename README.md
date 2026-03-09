@@ -98,16 +98,36 @@ Prominenet words include per category:
 Word clouds and word frequency chart were generated for each mental health category to visualize frequently occurring words in the dataset. Suicidal posts prominently contain terms related to death and distress, while depression and anxiety posts emphasize emotional and cognitive expressions such as “hate” and “anxious.” In contrast, normal posts tend to include more neutral everyday topics such as mom and school. These observations suggest that linguistic differences exist across categories, supporting the feasibility of using text-based machine learning methods for classification.
 
 ### Latent Dirichlet Allocation (LDA) Topic Modeling
-LDA is an unsupervised method that tries to discover hidden topics in the dataset. Instead of using labels (Suicidal, Depression, etc.), LDA thinks each topic is basically a cluster of words that tend to co-occur. So, it helps us to analyze language patterns before bulding classifiers. 
+**Topic Interpretation**
+
 <p align="center">
   <img src="figures/LDA_topic_groups.png" width="800">
 </p>
+
+LDA was applied to discover latent linguistic themes within the dataset without using the provided labels. Each topic represents a group of words that frequently co-occur across posts. The top words of each topic help interpret the underlying themes of discussion in the dataset. Several topics correspond to recognizable mental-health related patterns. For example, Topic 5 contains words such as anxiety, feel, anxious, depression, and help, which reflect emotional distress and anxiety-related expressions. Topic 4 includes words such as life, nothing, feel, and anymore, suggesting themes of hopelessness or negative emotional states often associated with depression. Topic 6 contains words such as suicide, kill, end, and life, indicating explicit suicidal ideation language. These topics demonstrate that the dataset contains multiple distinct linguistic patterns related to emotional distress, suicidal ideation, and everyday discussion.
+
+**Average Topic Distribution across Mental Health Categories**
+
 <p align="center">
   <img src="figures/LDA_topic_class_table.png" width="800">
 </p>
+
+To understand how these latent topics relate to the labeled categories, we computed the average topic proportion for each mental health class. Since LDA represents each document as a mixture of topics, the average topic weights indicate which topics are most prevalent within each category.
+
+**Distribution in Heatmap**
+
 <p align="center">
   <img src="figures/LDA_topic_class_heatmap.png" width="800">
 </p>
+
+- **Anxiety** posts are strongly associated with Topic 5 (0.53), which contains words related to anxiety symptoms and emotional distress.
+- **Depression** posts are primarily associated with Topic 4 (0.40), which reflects language of hopelessness and negative emotional states.
+- **Suicidal** posts show strong contributions from Topic 4 (0.38) and Topic 6 (0.25), suggesting a combination of depressive language and explicit references to suicide.
+- **Normal** posts show a more balanced distribution across topics, indicating more general conversational language rather than a dominant mental-health theme.
+
+This analysis supports the hypothesis that linguistic signals related to mental health conditions are detectable within online text posts, motivating the use of machine learning models to automatically identify high-risk content.
+
+
 ### Embedding Visualization (t-SNE / UMAP)
 To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
 
