@@ -99,7 +99,15 @@ Word clouds and word frequency chart were generated for each mental health categ
 
 ### Latent Dirichlet Allocation (LDA) Topic Modeling
 LDA is an unsupervised method that tries to discover hidden topics in the dataset. Instead of using labels (Suicidal, Depression, etc.), LDA thinks each topic is basically a cluster of words that tend to co-occur. So, it helps us to analyze language patterns before bulding classifiers. 
-
+<p align="center">
+  <img src="figures/LDA_topic_groups.png" width="800">
+</p>
+<p align="center">
+  <img src="figures/LDA_topic_class_table.png" width="800">
+</p>
+<p align="center">
+  <img src="figures/LDA_topic_class_heatmap.png" width="800">
+</p>
 ### Embedding Visualization (t-SNE / UMAP)
 To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
 
