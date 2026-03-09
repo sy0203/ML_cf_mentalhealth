@@ -85,6 +85,10 @@ The dataset shows *class imbalance*, with Anxiety class being the smallest categ
 </p>
 
 ### Word Frequency Chart
+<p align="center">
+  <img src="figures/word_frequency_chart.png" width="800">
+</p>
+
 Prominenet words include per category:
 - **Suicidal posts**: *die, kill, fuck, life, time*
 - **Depression posts**: *feel, know, time, life, people*
