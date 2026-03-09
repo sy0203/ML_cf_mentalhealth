@@ -5,17 +5,16 @@
 
 1. [Executive Summary](#executive-summary)
 2. [Problem Definition](#problem-definition)
-3. [Data Decription](#data-description)
-4. [Data Exploration](#data-exploration)
-5. [Text Preprocessing and Feature Engineering](#text-preprocessing-and-feature-engineering)
-6. [Modeling Approach](#modeling-approach)
-7. [Model Training Procedure](#model-training-procedure)
-8. [Evaluation Framework](#evaluation-framework)
-9. [Performance Summary](#performance-summary)
-10. [Error Analysis and Interpretation](#error-analysis-and-interpretation)
-11. [Limitations and Future Work](#limitations-and-future-work)
-12. [How It Can Be Used](#how-it-can-be-used)
-13. [References](#references)
+3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-(EDA))
+4. [Text Preprocessing and Feature Selection](#text-preprocessing-and-feature-selection)
+5. [Model Development](#modeling-development)
+8. [Model Training Procedure](#model-training-procedure)
+9. [Evaluation Framework](#evaluation-framework)
+10. [Performance Summary](#performance-summary)
+11. [Error Analysis and Interpretation](#error-analysis-and-interpretation)
+12. [Limitations and Future Work](#limitations-and-future-work)
+13. [How It Can Be Used](#how-it-can-be-used)
+14. [References](#references)
 
 ---
 
@@ -29,7 +28,7 @@ This project employs machine learning models to classify online text posts into 
 
 **Objective**: Given a text post x, predict its mental health category y &isin; {Suicidal, Depression, Anxiety, Normal}
 
-**Research Question**: 
+**Research Question**: How effectively can supervised ML models detect linguistic patterns associated with mental illness in online text posts and reliably flag high-risk content for early intervention by mental health support services?
 
 **Motivation**: Mental health signals often appear in online text communication. Automated text classification can assist in identifying patterns associated with psychological distress and may support research in mental health monitoring.
 
@@ -37,8 +36,9 @@ This project employs machine learning models to classify online text posts into 
 
 ---
 
-## Data Description
-### Data Structure
+## Exploratory Data Analysis (EDA)
+### Data Overview
+
 | File | Description |
 |----------|---------------------|
 | **train.csv** | Labeled dataset used for model training |
@@ -51,7 +51,7 @@ Each record contains:
 | *text* | Raw text content of the post |
 | *status* | Mental health label (training set only) |
 
-### Label Categories
+The labels are:
 | Class | Description |
 |----------|----------------|
 | **Suicidal** | Posts expressing suicidal thoughts |
@@ -59,15 +59,13 @@ Each record contains:
 | **Anxiety** | Posts expressing worry or panic |
 | **Normal** | Posts not related to mental health distress |
 
-### Data Statistics
+The data consists of two parts:
 - **Training set**: 41,174 labeled posts
 - **Test set**: 8,436 posts for prediction
-
----
-
-## Data Exploration
+  
 
 ### Class Distribution
+
 | Class | Label Count | Percentage |
 |----------|---------|--------|
 | Suicidal | 9,102 | 22.1% |
@@ -77,54 +75,35 @@ Each record contains:
 
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
-### Average Text Length
-| Class | Average Word Count |
-|----------|---------|
-| Suicidal | . |
-| Depression | . |
-| Anxiety | . |
-| Normal | . |
 
-Some posts consits of only a few words, while otehr contain long paragraphs. This variation suggests that models must handle both short expressions of emotion and long narrative descriptions of mental health experiences.
-
-### Word Frequency Patterns
-
-Preliminary exploration of word frequencies reveals distinct linguistic patterns across categories.
-- **Suicidal posts**: words such as *die, hopeless, end*
-- **Depression posts**: words such as *tired, empty, worthless, alone*
-- **Anxiety posts**: words such as *worry, panic, afraid, nervous*
-- **Normal posts**: broader conversational vocabularies unrelated to emotional distress
-
-These patterns suggest that linguistic features may help models distinguish between mental health categories.
-
-### Visualization on Word Frequency Patterns (working on it)
+### Word Frequency (Word clouds)
 - Word clouds (corresponding to the group of words listed above per category)
-- t-SNE embeddings of text vectors (i heard this is for unsupervised but i will look into it)
+
+### Embedding Visualization (t-SNE / UMAP)
+To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
 
 ---
 
-## Text Preprocessing and Feature Engineering
-
-In addition to transformer-based sentence embeddings, we incorporated several linguistic features inspired by psychological language research. These features included first-person pronoun frequency, negative emotion word usage, absolutist terms, and message length. Prior research has shown that individuals experiencing suicidal ideation often exhibit distinctive linguistic patterns, such as increased self-referential language and absolutist thinking. Combining semantic embeddings with these linguistic features improved the model’s ability to detect suicide-related language.
-
-**Preprocessing steps**
+## Text Preprocessing and Feature Selection
+### Preprocessing Steps
 - lowercasing text
 - removing URLs
 - tokenization
 - optional stopword removal
 
-**Feature representation**
+### Feature Representation
 - TF-IDF: Converts text into sparse vectors representing word importance.
 - Embeddings: Sentence embeddings or transformer outputs capture semantic meaning.
 
-**Additional linguistic features**
+### Linguistic Feature Engineering
+In addition to transformer-based sentence embeddings, we incorporated several linguistic features inspired by psychological language research. These features included first-person pronoun frequency, negative emotion word usage, absolutist terms, and message length. Prior research has shown that individuals experiencing suicidal ideation often exhibit distinctive linguistic patterns, such as increased self-referential language and absolutist thinking. Combining semantic embeddings with these linguistic features improved the model’s ability to detect suicide-related language.
 - punctuation counts
 - post length
 - sentiment score
 
 ---
 
-# Modeling Approach
+# Model Development
 ### Baseline Models
 - **Logistic Regression**
 - **Support Vector Machine**
