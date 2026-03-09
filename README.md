@@ -105,6 +105,8 @@ These patterns suggest that linguistic features may help models distinguish betw
 
 ## Text Preprocessing and Feature Engineering
 
+In addition to transformer-based sentence embeddings, we incorporated several linguistic features inspired by psychological language research. These features included first-person pronoun frequency, negative emotion word usage, absolutist terms, and message length. Prior research has shown that individuals experiencing suicidal ideation often exhibit distinctive linguistic patterns, such as increased self-referential language and absolutist thinking. Combining semantic embeddings with these linguistic features improved the model’s ability to detect suicide-related language.
+
 **Preprocessing steps**
 - lowercasing text
 - removing URLs
