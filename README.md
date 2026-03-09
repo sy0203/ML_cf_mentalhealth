@@ -73,7 +73,7 @@ The data consists of two parts:
 | Normal | 16,281 | 39.5% |
 
 <p align="center">
-  <img src="figuress/class_distribution.png" width="800">
+  <img src="figures/class_distribution.png" width="800">
 </p>
 
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
@@ -103,8 +103,10 @@ To qualitatively assess whether transformer-based sentence embeddings capture me
 - optional stopword removal
 
 ### Feature Representation
-- TF-IDF: Converts text into sparse vectors representing word importance.
-- Embeddings: Sentence embeddings or transformer outputs capture semantic meaning.
+1. **TF-IDF**: Term Frequency–Inverse Document Frequency is used as the baseline feature representation because it is a widely adopted method in classical text classification tasks. TF-IDF represents documents as vectors based on the importance of words within a document relative to the entire corpus. This approach captures word frequency patterns that may distinguish different mental health categories. For example, suicidal posts may contain terms related to death or hopelessness, while anxiety-related posts may contain words associated with panic or worry. TF-IDF is computationally efficient, interpretable, and provides a strong baseline for comparison against more advanced representations.
+2. **Sentence Embeddings**: Sentence embeddings are used as an improved feature representation because they capture the semantic meaning of text rather than relying solely on word frequency. Transformer-based embedding models map entire sentences into dense vector representations that preserve contextual relationships between words. This allows semantically similar sentences to have similar representations even if they use different vocabulary.
+For example, *"I want to disappear."* and *"I don't want to live anymore."* may be represented similarly by embeddings despite sharing few words. This property is particularly useful for mental health text classification, where emotional expressions may appear in many different forms.
+
 
 ### Linguistic Feature Engineering
 In addition to transformer-based sentence embeddings, we incorporated several linguistic features inspired by psychological language research. These features included first-person pronoun frequency, negative emotion word usage, absolutist terms, and message length. Prior research has shown that individuals experiencing suicidal ideation often exhibit distinctive linguistic patterns, such as increased self-referential language and absolutist thinking. Combining semantic embeddings with these linguistic features improved the model’s ability to detect suicide-related language.
@@ -115,17 +117,40 @@ In addition to transformer-based sentence embeddings, we incorporated several li
 ---
 
 ## Model Development
-### Binary Classification Models
-- Baseline:
-- Improved:
-- Stronger:
-- Advanced:
-  
-### Multi-class Classification Models
-- Baseline:
-- Improved:
-- Stronger:
-- Advanced:
+
+We first establish a baseline using TF-IDF features with logistic regression, a widely used benchmark in text classification. We then evaluate more expressive representations using transformer-based sentence embeddings combined with classical machine learning models such as SVM and Random Forest. Finally, we explore fine-tuning a BERT model to capture deeper contextual relationships in the text.
+
+### 1. Multi-class Classification Models
+A similar progression of models is used to evaluate improvements in both model complexity and feature representation. This mirrors the binary pipeline but adapts it for multi-class learning.
+
+| Level | Model | Features |
+|----------|----------------|-------------|
+| **Baseline** | Multinomial Logistic Regression | TF-IDF |
+| **Model Improvement** | Support Vector Machines (SVM) | TF-IDF |
+| **Feature Improvement** | Multinomial Logistic Regression | Sentence Embeddings |
+| **Combined** | SVM | Sentence Embeddings |
+| **Advanced** | BERT | raw text |
+| **Optional** | Random Forest / kNN | Sentence Embeddings |
+
+### 2. Binary Classification Models
+The binary classification task aims to detect suicidal risk, where posts labeled as Suicidal, Depression, or Anxiety are grouped into a single risk category and compared against Normal posts. This framing aligns with the real-world objective of identifying posts that may require mental health intervention. To systematically evaluate the effect of both feature representation and model complexity, we adopt a progressive model hierarchy. Each stage introduces a controlled improvement so that the contribution of features and classifiers can be examined separately.
+
+| Level | Model | Features |
+|----------|----------------|-------------|
+| **Baseline** | Logistic Regression | TF-IDF |
+| **Model Improvement** | Support Vector Machines (SVM) | TF-IDF |
+| **Feature Improvement** | Logistic Regression | Sentence Embeddings |
+| **Combined** | SVM | Sentence Embeddings |
+| **Advanced** | BERT | raw text |
+| **Optional** | Random Forest / kNN | Sentence Embeddings |
+
+- **Baseline**: Logistic regression with TF-IDF is selected as the baseline because it is a standard benchmark in text classification. The linear nature of logistic regression works well with high-dimensional sparse features such as TF-IDF vectors. This model provides an interpretable starting point and allows us to evaluate whether more complex representations offer meaningful improvements.
+- **Model Improvement**: To evaluate whether a stronger classifier improves performance while keeping the feature representation fixed, we replace logistic regression with a Support Vector Machine (SVM) using the same TF-IDF features. SVMs are widely used in text classification because they are effective in high-dimensional spaces and can learn more flexible decision boundaries than logistic regression. By holding the TF-IDF representation constant, this experiment isolates the effect of changing the classifier.
+- **Feature Improvement**: We examine the impact of improving the feature representation while keeping the classifier constant. Sentence embeddings generated from transformer-based models encode the semantic meaning of entire sentences into dense vector representations. Unlike TF-IDF, which only captures word frequency, embeddings capture contextual relationships and semantic similarity between sentences. For example, sentences expressing similar emotional meaning may be represented closely in embedding space even if they use different vocabulary. Applying logistic regression to sentence embeddings allows us to test whether richer semantic representations improve classification performance.
+- **Combined**: After independently evaluating both classifier and feature improvements, we combine them by training an SVM using sentence embeddings. This model integrates both improvements: a stronger classifier and a more expressive feature representation. The goal is to determine whether the combination of these two factors produces better predictive performance than either improvement alone.
+- **Advanced**: BERT (Bidirectional Encoder Representations from Transformers) is included as the most advanced model in the study. Unlike TF-IDF or static sentence embeddings, BERT processes raw text directly and learns contextual relationships between words through a deep transformer architecture. Fine-tuning BERT allows the model to adapt its internal representations specifically for the mental health classification task. This model represents the current state-of-the-art approach for many natural language processing tasks.
+- **Optional**: Additional models such as Random Forest and k-Nearest Neighbors (kNN) are explored as optional experiments using sentence embeddings. These models are included to investigate whether nonlinear or distance-based classifiers can capture patterns within embedding space that linear classifiers may miss. However, they are not part of the main experimental progression because logistic regression and SVM are generally stronger baselines for high-dimensional text data.
+
 
 ### Model Training Procedure
 - Validation split
