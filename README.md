@@ -79,11 +79,12 @@ The data consists of two parts:
 The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
 
-### Word Frequency (Word clouds)
+### Word Clouds
 <p align="center">
   <img src="figures/word_cloud.png" width="800">
 </p>
 
+### Word Frequency Chart
 Prominenet words include per category:
 - **Suicidal posts**: *die, kill, fuck, life, time*
 - **Depression posts**: *feel, know, time, life, people*
