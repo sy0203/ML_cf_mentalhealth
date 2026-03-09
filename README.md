@@ -35,7 +35,7 @@ This project employs machine learning models to classify online text posts into 
 
 ---
 
-## Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis
 ### Data Overview
 
 | File | Description |
@@ -141,7 +141,7 @@ Figures, tables, justification of the best chosen model
 
 ---
 
-## Suicide Risk Detection Framework (Application)
+## Suicide Risk Detection Framework
 
 ---
 
