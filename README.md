@@ -92,6 +92,8 @@ Prominenet words include per category:
 
 Word clouds were generated for each mental health category to visualize frequently occurring words in the dataset. Suicidal posts prominently contain terms related to death and distress, while depression and anxiety posts emphasize emotional and cognitive expressions such as “feel” and “know.” In contrast, normal posts tend to include more neutral everyday topics such as school, work, and family. These observations suggest that linguistic differences exist across categories, supporting the feasibility of using text-based machine learning methods for classification.
 
+### Latent Dirichlet Allocation (LDA) Topic Modeling
+
 ### Embedding Visualization (t-SNE / UMAP)
 To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
 
@@ -103,24 +105,37 @@ To qualitatively assess whether transformer-based sentence embeddings capture me
 - removing URLs
 - tokenization
 - optional stopword removal
+  
 
 ### Feature Representation
-1. **TF-IDF**: Term Frequency–Inverse Document Frequency is used as the baseline feature representation because it is a widely adopted method in classical text classification tasks. TF-IDF represents documents as vectors based on the importance of words within a document relative to the entire corpus. This approach captures word frequency patterns that may distinguish different mental health categories. For example, suicidal posts may contain terms related to death or hopelessness, while anxiety-related posts may contain words associated with panic or worry. TF-IDF is computationally efficient, interpretable, and provides a strong baseline for comparison against more advanced representations.
+1. **TF-IDF**: Term Frequency–Inverse Document Frequency is used as the baseline feature representation because it is a widely adopted method in classical text classification tasks. TF-IDF represents documents as weighted vectors based on the importance of words within a document relative to the entire corpus. This approach captures word frequency patterns that may distinguish different mental health categories. For example, suicidal posts may contain terms related to death or hopelessness, while anxiety-related posts may contain words associated with panic or worry. TF-IDF is computationally efficient, interpretable, and provides a strong baseline for comparison against more advanced representations.
+- Library: scikit-learn
+
 2. **Sentence Embeddings**: Sentence embeddings are used as an improved feature representation because they capture the semantic meaning of text rather than relying solely on word frequency. Transformer-based embedding models map entire sentences into dense vector representations that preserve contextual relationships between words. This allows semantically similar sentences to have similar representations even if they use different vocabulary.
 For example, *"I want to disappear."* and *"I don't want to live anymore."* may be represented similarly by embeddings despite sharing few words. This property is particularly useful for mental health text classification, where emotional expressions may appear in many different forms.
+- Library: SentenceTransformers
+- Model: all-MiniLM-L6-v2
+
+3. **Contextual Representation**:
+- Library: Hugging Face Transformers
+- Models: BERT, RoBERTa, DistilBERT
 
 
 ### Linguistic Feature Engineering
 In addition to transformer-based sentence embeddings, we incorporated several linguistic features inspired by psychological language research. These features included first-person pronoun frequency, negative emotion word usage, absolutist terms, and message length. Prior research has shown that individuals experiencing suicidal ideation often exhibit distinctive linguistic patterns, such as increased self-referential language and absolutist thinking. Combining semantic embeddings with these linguistic features improved the model’s ability to detect suicide-related language.
-- punctuation counts
-- post length
-- sentiment score
+- Pronoun usage
+- Negative emotion words
+- Absolutist language
+- Sentence length
+- Punctuation patterns
 
 ---
 
 ## Model Development
 
 We first establish a baseline using TF-IDF features with logistic regression, a widely used benchmark in text classification. We then evaluate more expressive representations using transformer-based sentence embeddings combined with classical machine learning models such as SVM and Random Forest. Finally, we explore fine-tuning a BERT model to capture deeper contextual relationships in the text.
+
+Since we have seen the dataset contains uneven class distributions in data exploration section, with fewer examples of suicidal posts compared to other categories, class imbalance handling is applied during model training. We use class weighting to assign higher importance to minority classes so that the classifier does not become biased toward predicting the majority class. This helps improve the model’s ability to correctly identify posts associated with suicidal ideation.
 
 ### 1. Multi-class Classification Models
 A similar progression of models is used to evaluate improvements in both model complexity and feature representation. This mirrors the binary pipeline but adapts it for multi-class learning.
@@ -170,7 +185,15 @@ The binary classification task aims to detect suicidal risk, where posts labeled
 | Accruacy | Overall correctness |
 | Precision | Control false positives |
 | Recall | Detect true cases |
-| F1 score | Balance precision and recall |
+| (macro) F1 score | Balance precision and recall |
+| ROC / Precision-Revall Curves | Confidence of the model in suicidal predictions |
+
+---
+
+## Model Interpretation
+The following tools help explain why the model made a prediction:
+1. **SHAP**: It explains feature contributions. Example: word *"die* increases suicial probability.
+2. **LIME**: It explains individual prediction. Example: why this specific post was classified as suicidal
 
 ---
 
