@@ -8,13 +8,12 @@
 3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-(EDA))
 4. [Text Preprocessing and Feature Selection](#text-preprocessing-and-feature-selection)
 5. [Model Development](#modeling-development)
-8. [Model Training Procedure](#model-training-procedure)
-9. [Evaluation Framework](#evaluation-framework)
-10. [Performance Summary](#performance-summary)
-11. [Error Analysis and Interpretation](#error-analysis-and-interpretation)
-12. [Limitations and Future Work](#limitations-and-future-work)
-13. [How It Can Be Used](#how-it-can-be-used)
-14. [References](#references)
+6. [Model Evaluation](#model-evaluation)
+7. [Performance Summary](#performance-summary)
+8. [Suicide Risk Detection Framework (Application)](#suicide-risk-detection-framework-(application))
+9. [Limitations and Future Work](#limitations-and-future-work)
+10. [How It Can Be Used](#how-it-can-be-used)
+11. [References](#references)
 
 ---
 
@@ -103,25 +102,28 @@ In addition to transformer-based sentence embeddings, we incorporated several li
 
 ---
 
-# Model Development
-### Baseline Models
-- **Logistic Regression**
-- **Support Vector Machine**
-
-### Advanced Models
-- **Transformer-based models such as BERT or DistilBERT**
+## Model Development
+### Binary Classification Models
+- Baseline:
+- Improved:
+- Stronger:
+- Advanced:
   
----
+### Multi-class Classification Models
+- Baseline:
+- Improved:
+- Stronger:
+- Advanced:
 
-## Model Training Procedure
+### Model Training Procedure
 - Validation split
 - Cross-validation
 - Hyperparameter tuning using grid search
 - Class weighting
-
+  
 ---
 
-## Evaluation Framework
+## Model Evaluation
 
 ### Key Metrics
 | Metric | Purpose |
@@ -139,7 +141,7 @@ Figures, tables, justification of the best chosen model
 
 ---
 
-## Error Analysis and Interpretation
+## Suicide Risk Detection Framework (Application)
 
 ---
 
@@ -189,7 +191,7 @@ Figures, tables, justification of the best chosen model
 ## References
 - Kaggle. (2026). Classification of Mental Health Status Dataset. Retrieved from https://www.kaggle.com/competitions/classification-of-mental-health-status/data
 - Relevant research papers
-- Any libraries used
+- Any tools used
 
 ---
 
