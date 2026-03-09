@@ -72,11 +72,11 @@ The data consists of two parts:
 | Anxiety | 3,394 | 8.2% |
 | Normal | 16,281 | 39.5% |
 
+The dataset shows *class imbalance*, with Anxiety class being the smallest category.
+
 <p align="center">
   <img src="figures/class_distribution.png" width="800">
 </p>
-
-The dataset shows *class imbalance*, with Anxiety class being the smallest category.
 
 
 ### Word Clouds
