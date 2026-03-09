@@ -76,7 +76,15 @@ The dataset shows *class imbalance*, with Anxiety class being the smallest categ
 
 
 ### Word Frequency (Word clouds)
-- Word clouds (corresponding to the group of words listed above per category)
+- image to be attached
+
+Prominenet words include per category:
+- **Suicidal posts**: *die, kill, fuck, life, time*
+- **Depression posts**: *feel, know, time, life, people*
+- **Anxiety posts**: *feel, know, time, people, panic*
+- **Normal posts**: *mom, school, work, friend, day*
+
+Word clouds were generated for each mental health category to visualize frequently occurring words in the dataset. Suicidal posts prominently contain terms related to death and distress, while depression and anxiety posts emphasize emotional and cognitive expressions such as “feel” and “know.” In contrast, normal posts tend to include more neutral everyday topics such as school, work, and family. These observations suggest that linguistic differences exist across categories, supporting the feasibility of using text-based machine learning methods for classification.
 
 ### Embedding Visualization (t-SNE / UMAP)
 To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
