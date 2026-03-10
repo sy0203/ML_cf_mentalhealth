@@ -144,7 +144,7 @@ Both t-SNE and UMAP were applied to project high-dimensional sentence embeddings
 ### Preprocessing Steps
 Unlike traditional NLP pipelines, punctuation and numbers were partially preserved because they can carry emotional meaning in social media text (i.e., “!!!”, “day 1”, “why??”).
 - Lowercasing
-- Contraction expansion
+- Lemmatization (i.e. *can't* to *cannot*)
 - URL removal
 - Mention removal
 - Hashtag normalization
