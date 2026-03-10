@@ -180,7 +180,6 @@ We first establish a baseline using TF-IDF features with logistic regression, a 
 Since we have seen the dataset contains uneven class distributions in data exploration section, with fewer examples of suicidal posts compared to other categories, class imbalance handling is applied during model training. We use class weighting to assign higher importance to minority classes so that the classifier does not become biased toward predicting the majority class. This helps improve the model’s ability to correctly identify posts associated with suicidal ideation.
 
 ### 1. Multi-class Classification Models
-A similar progression of models is used to evaluate improvements in both model complexity and feature representation. This mirrors the binary pipeline but adapts it for multi-class learning.
 
 | Level | Model | Features |
 |----------|----------------|-------------|
@@ -191,7 +190,15 @@ A similar progression of models is used to evaluate improvements in both model c
 | **Advanced** | BERT | raw text |
 | **Optional** | Random Forest / kNN | Sentence Embeddings |
 
-### 2. Binary Classification Models
+- **Baseline**: Logistic regression with TF-IDF is selected as the baseline because it is a standard benchmark in text classification. The linear nature of logistic regression works well with high-dimensional sparse features such as TF-IDF vectors. This model provides an interpretable starting point and allows us to evaluate whether more complex representations offer meaningful improvements.
+- **Model Improvement**: To evaluate whether a stronger classifier improves performance while keeping the feature representation fixed, we replace logistic regression with a Support Vector Machine (SVM) using the same TF-IDF features. SVMs are widely used in text classification because they are effective in high-dimensional spaces and can learn more flexible decision boundaries than logistic regression. By holding the TF-IDF representation constant, this experiment isolates the effect of changing the classifier.
+- **Feature Improvement**: We examine the impact of improving the feature representation while keeping the classifier constant. Sentence embeddings generated from transformer-based models encode the semantic meaning of entire sentences into dense vector representations. Unlike TF-IDF, which only captures word frequency, embeddings capture contextual relationships and semantic similarity between sentences. For example, sentences expressing similar emotional meaning may be represented closely in embedding space even if they use different vocabulary. Applying logistic regression to sentence embeddings allows us to test whether richer semantic representations improve classification performance.
+- **Combined**: After independently evaluating both classifier and feature improvements, we combine them by training an SVM using sentence embeddings. This model integrates both improvements: a stronger classifier and a more expressive feature representation. The goal is to determine whether the combination of these two factors produces better predictive performance than either improvement alone.
+- **Advanced**: BERT (Bidirectional Encoder Representations from Transformers) is included as the most advanced model in the study. Unlike TF-IDF or static sentence embeddings, BERT processes raw text directly and learns contextual relationships between words through a deep transformer architecture. Fine-tuning BERT allows the model to adapt its internal representations specifically for the mental health classification task. This model represents the current state-of-the-art approach for many natural language processing tasks.
+- **Optional**: Additional models such as Random Forest and k-Nearest Neighbors (kNN) are explored as optional experiments using sentence embeddings. These models are included to investigate whether nonlinear or distance-based classifiers can capture patterns within embedding space that linear classifiers may miss. However, they are not part of the main experimental progression because logistic regression and SVM are generally stronger baselines for high-dimensional text data.
+
+
+### 2. Binary Classification Models (might have to drop this idea, it will interrupt with the accuracy test on kaggle and it's too extreme; we can talk about it later)
 The binary classification task aims to detect suicidal risk, where posts labeled as Suicidal, Depression, or Anxiety are grouped into a single risk category and compared against Normal posts. This framing aligns with the real-world objective of identifying posts that may require mental health intervention. To systematically evaluate the effect of both feature representation and model complexity, we adopt a progressive model hierarchy. Each stage introduces a controlled improvement so that the contribution of features and classifiers can be examined separately.
 
 | Level | Model | Features |
@@ -202,13 +209,6 @@ The binary classification task aims to detect suicidal risk, where posts labeled
 | **Combined** | SVM | Sentence Embeddings |
 | **Advanced** | BERT | raw text |
 | **Optional** | Random Forest / kNN | Sentence Embeddings |
-
-- **Baseline**: Logistic regression with TF-IDF is selected as the baseline because it is a standard benchmark in text classification. The linear nature of logistic regression works well with high-dimensional sparse features such as TF-IDF vectors. This model provides an interpretable starting point and allows us to evaluate whether more complex representations offer meaningful improvements.
-- **Model Improvement**: To evaluate whether a stronger classifier improves performance while keeping the feature representation fixed, we replace logistic regression with a Support Vector Machine (SVM) using the same TF-IDF features. SVMs are widely used in text classification because they are effective in high-dimensional spaces and can learn more flexible decision boundaries than logistic regression. By holding the TF-IDF representation constant, this experiment isolates the effect of changing the classifier.
-- **Feature Improvement**: We examine the impact of improving the feature representation while keeping the classifier constant. Sentence embeddings generated from transformer-based models encode the semantic meaning of entire sentences into dense vector representations. Unlike TF-IDF, which only captures word frequency, embeddings capture contextual relationships and semantic similarity between sentences. For example, sentences expressing similar emotional meaning may be represented closely in embedding space even if they use different vocabulary. Applying logistic regression to sentence embeddings allows us to test whether richer semantic representations improve classification performance.
-- **Combined**: After independently evaluating both classifier and feature improvements, we combine them by training an SVM using sentence embeddings. This model integrates both improvements: a stronger classifier and a more expressive feature representation. The goal is to determine whether the combination of these two factors produces better predictive performance than either improvement alone.
-- **Advanced**: BERT (Bidirectional Encoder Representations from Transformers) is included as the most advanced model in the study. Unlike TF-IDF or static sentence embeddings, BERT processes raw text directly and learns contextual relationships between words through a deep transformer architecture. Fine-tuning BERT allows the model to adapt its internal representations specifically for the mental health classification task. This model represents the current state-of-the-art approach for many natural language processing tasks.
-- **Optional**: Additional models such as Random Forest and k-Nearest Neighbors (kNN) are explored as optional experiments using sentence embeddings. These models are included to investigate whether nonlinear or distance-based classifiers can capture patterns within embedding space that linear classifiers may miss. However, they are not part of the main experimental progression because logistic regression and SVM are generally stronger baselines for high-dimensional text data.
 
 
 ### Model Training Procedure
@@ -246,6 +246,7 @@ Figures, tables, justification of the best chosen model
 ---
 
 ## Suicide Risk Detection Framework
+Application to real world of how we can actually help moderators.
 
 ---
 
