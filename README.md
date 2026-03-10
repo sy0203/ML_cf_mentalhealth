@@ -133,7 +133,6 @@ To explore whether posts from different mental health categories exhibit distinc
 
 <p align="left">
   <img src="figures/t-SNE.png" width="400">
-<p align="right">
   <img src="figures/UMAP.png" width="400">
 </p>
 
