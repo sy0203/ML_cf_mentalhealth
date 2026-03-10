@@ -292,7 +292,7 @@ Application to real world of how we can actually help moderators.
 - **Trend Monitoring**: Track changes in mental health–related language patterns over time or during major societal events.
 - **Behavioral Insights**: Examine how emotional tone, vocabulary, and writing style correlate with different mental health states.
 
-### For Data Scientists and NLP Practitioners**
+### For Data Scientists and NLP Practitioners
 - **Benchmark Dataset**: Use the dataset to evaluate new NLP classification methods for emotionally sensitive text.
 - **Model Comparison**: Test different architectures such as TF-IDF models, neural networks, and transformer-based models.
 - **Explainability Research**: Apply interpretability methods (i.e., SHAP or attention analysis) to understand model decisions.
