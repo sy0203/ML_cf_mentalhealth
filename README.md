@@ -299,9 +299,9 @@ Application to real world of how we can actually help moderators.
 - **Class Imbalance Strategies**: Experiment with sampling techniques, class weighting, and threshold tuning for imbalanced datasets.
 ---
 
-## References
-- Kaggle. (2026). Classification of Mental Health Status Dataset. Retrieved from https://www.kaggle.com/competitions/classification-of-mental-health-status/data
-- Relevant research papers
+## References (APA7)
+- **Source of train and test data**: Kaggle. (2026). Classification of Mental Health Status Dataset. Retrieved from https://www.kaggle.com/competitions/classification-of-mental-health-status/data
+- **Text cleaning**: Baldwin, T., & Li, Y. (2015). An in-depth analysis of the effect of text normalization in social media. Proceedings of the 2015 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, 420–429. https://doi.org/10.3115/v1/n15-1045 
 - Any tools used
 
 ---
