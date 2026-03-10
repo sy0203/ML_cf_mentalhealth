@@ -139,6 +139,7 @@ To qualitatively assess whether transformer-based sentence embeddings capture me
 - removing URLs
 - tokenization
 - optional stopword removal
+- **take acccount of repeats**
   
 
 ### Feature Representation
