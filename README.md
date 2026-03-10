@@ -177,6 +177,10 @@ In addition to transformer-based sentence embeddings, we incorporated several li
 
 ## Model Development
 
+To answer our research question, our models should be able to answer:
+1. **Detection Ability**: Can models classify suicidal, depression, anxiety, and normal posts?
+2. **Intervention Usefulness**:Can the model reliably flag high-risk content (especially suicidal posts)?
+   
 We first establish a baseline using TF-IDF features with logistic regression, a widely used benchmark in text classification. We then evaluate more expressive representations using transformer-based sentence embeddings combined with classical machine learning models such as SVM and Random Forest. Finally, we explore fine-tuning a BERT model to capture deeper contextual relationships in the text.
 
 Since we have seen the dataset contains uneven class distributions in data exploration section, with fewer examples of suicidal posts compared to other categories, class imbalance handling is applied during model training. We use class weighting to assign higher importance to minority classes so that the classifier does not become biased toward predicting the majority class. This helps improve the model’s ability to correctly identify posts associated with suicidal ideation.
