@@ -142,12 +142,14 @@ Both t-SNE and UMAP were applied to project high-dimensional sentence embeddings
 
 ## Text Preprocessing and Feature Selection
 ### Preprocessing Steps
-- lowercasing text
-- removing URLs
-- tokenization
-- optional stopword removal
-- **take acccount of repeats**
-  
+Unlike traditional NLP pipelines, punctuation and numbers were partially preserved because they can carry emotional meaning in social media text (i.e., “!!!”, “day 1”, “why??”).
+- Lowercasing
+- Contraction expansion
+- URL removal
+- Mention removal
+- Hashtag normalization
+- Repeated character normalization
+- Punctuation preservation for emotional signals  
 
 ### Feature Representation
 1. **TF-IDF**: Term Frequency–Inverse Document Frequency is used as the baseline feature representation because it is a widely adopted method in classical text classification tasks. TF-IDF represents documents as weighted vectors based on the importance of words within a document relative to the entire corpus. This approach captures word frequency patterns that may distinguish different mental health categories. For example, suicidal posts may contain terms related to death or hopelessness, while anxiety-related posts may contain words associated with panic or worry. TF-IDF is computationally efficient, interpretable, and provides a strong baseline for comparison against more advanced representations.
