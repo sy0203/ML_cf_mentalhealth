@@ -27,7 +27,7 @@ This project employs machine learning models to classify online text posts into 
 
 **Objective**: Given a text post x, predict its mental health category y &isin; {Suicidal, Depression, Anxiety, Normal}
 
-**Research Question**: How effectively can supervised ML models detect linguistic patterns associated with mental illness in online text posts and reliably flag high-risk content for early intervention by mental health support services?
+**Research Question**: How effectively can supervised machine learning models detect linguistic patterns associated with suicidal ideation, depression, anxiety, and normal expression in online text posts, and to what extent can these predictions support the identification of high-risk content for early intervention by mental health support services?
 
 **Motivation**: Mental health signals often appear in online text communication. Automated text classification can assist in identifying patterns associated with psychological distress and may support research in mental health monitoring.
 
@@ -36,7 +36,7 @@ This project employs machine learning models to classify online text posts into 
 ---
 
 ## Exploratory Data Analysis
-### Data Overview
+### 1. Data Overview
 
 | File | Description |
 |----------|---------------------|
@@ -63,7 +63,7 @@ The data consists of two parts:
 - **Test set**: 8,436 posts for prediction
   
 
-### Class Distribution
+### 2. Class Distribution
 
 | Class | Label Count | Percentage |
 |----------|---------|--------|
@@ -79,12 +79,12 @@ The dataset shows *class imbalance*, with Anxiety class being the smallest categ
 </p>
 
 
-### Word Clouds
+### 3. Word Clouds
 <p align="center">
   <img src="figures/word_cloud.png" width="800">
 </p>
 
-### Word Frequency Chart
+### 4. Word Frequency Chart
 <p align="center">
   <img src="figures/word_frequency_chart.png" width="800">
 </p>
@@ -97,7 +97,7 @@ Prominenet words include per category:
 
 Word clouds and word frequency chart were generated for each mental health category to visualize frequently occurring words in the dataset. Suicidal posts prominently contain terms related to death and distress, while depression and anxiety posts emphasize emotional and cognitive expressions such as “hate” and “anxious.” In contrast, normal posts tend to include more neutral everyday topics such as mom and school. These observations suggest that linguistic differences exist across categories, supporting the feasibility of using text-based machine learning methods for classification.
 
-### Latent Dirichlet Allocation (LDA) Topic Modeling
+### 5. Latent Dirichlet Allocation (LDA) Topic Modeling
 **Topic Interpretation**
 
 <p align="center">
@@ -128,8 +128,18 @@ To understand how these latent topics relate to the labeled categories, we compu
 This analysis supports the hypothesis that linguistic signals related to mental health conditions are detectable within online text posts, motivating the use of machine learning models to automatically identify high-risk content.
 
 
-### Embedding Visualization (t-SNE / UMAP)
-To qualitatively assess whether transformer-based sentence embeddings capture meaningful differences between mental health categories, we projected the high-dimensional embedding vectors into two dimensions using t-SNE/UMAP. The visualization showed partial clustering by class, with suicidal and normal posts exhibiting clearer separation, while depression and anxiety posts displayed greater overlap. This supports the view that embedding representations contain useful semantic information for downstream classification.
+### 6. Embedding Visualization: t-SNE and UMAP
+To explore whether posts from different mental health categories exhibit distinct linguistic patterns, we visualized sentence embeddings using dimensionality reduction techniques. 
+
+<p align="left">
+  <img src="figures/LDA_topic_class_heatmap.png" width="800">
+</p>
+
+<p align="right">
+  <img src="figures/LDA_topic_class_heatmap.png" width="800">
+</p>
+
+Both t-SNE and UMAP were applied to project high-dimensional sentence embeddings into two dimensions. The resulting plots show that posts labeled as Normal form a distinct cluster separated from mental health–related categories. Anxiety posts also exhibit a relatively cohesive cluster, while Depression and Suicidal posts show partial overlap, reflecting similarities in emotional language between these conditions. The consistent patterns observed across both t-SNE and UMAP agree to suggest that the embedding representations capture meaningful semantic differences between mental health categories.
 
 ---
 
