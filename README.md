@@ -132,11 +132,11 @@ This analysis supports the hypothesis that linguistic signals related to mental 
 To explore whether posts from different mental health categories exhibit distinct linguistic patterns, we visualized sentence embeddings using dimensionality reduction techniques. 
 
 <p align="left">
-  <img src="figures/LDA_topic_class_heatmap.png" width="800">
+  <img src="figures/t-SNE.png" width="400">
 </p>
 
 <p align="right">
-  <img src="figures/LDA_topic_class_heatmap.png" width="800">
+  <img src="figures/UMAP.png" width="400">
 </p>
 
 Both t-SNE and UMAP were applied to project high-dimensional sentence embeddings into two dimensions. The resulting plots show that posts labeled as Normal form a distinct cluster separated from mental health–related categories. Anxiety posts also exhibit a relatively cohesive cluster, while Depression and Suicidal posts show partial overlap, reflecting similarities in emotional language between these conditions. The consistent patterns observed across both t-SNE and UMAP agree to suggest that the embedding representations capture meaningful semantic differences between mental health categories.
