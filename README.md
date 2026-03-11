@@ -185,12 +185,10 @@ We first establish a baseline using TF-IDF features with logistic regression, a 
 
 Since we have seen the dataset contains uneven class distributions in data exploration section, with fewer examples of suicidal posts compared to other categories, class imbalance handling is applied during model training. We use class weighting to assign higher importance to minority classes so that the classifier does not become biased toward predicting the majority class. This helps improve the model’s ability to correctly identify posts associated with suicidal ideation.
 
-### 1. Multi-class Classification Models
-
 | Level | Model | Features |
 |----------|----------------|-------------|
 | **Baseline** | Multinomial Logistic Regression | TF-IDF |
-| **Model Improvement** | Support Vector Machines (SVM) | TF-IDF |
+| **Model Improvement** | Support Vector Machines (SVM) | TF-IDF|
 | **Feature Improvement** | Multinomial Logistic Regression | Sentence Embeddings |
 | **Combined** | SVM | Sentence Embeddings |
 | **Advanced** | SVM | Sentence Embeddings + Linguistic Features|
@@ -205,25 +203,11 @@ Since we have seen the dataset contains uneven class distributions in data explo
 - **Transformer**: BERT (Bidirectional Encoder Representations from Transformers) is included as the most advanced model in the study. Unlike TF-IDF or static sentence embeddings, BERT processes raw text directly and learns contextual relationships between words through a deep transformer architecture. Fine-tuning BERT allows the model to adapt its internal representations specifically for the mental health classification task. This model represents the current state-of-the-art approach for many natural language processing tasks.
 - **Optional**: Additional models such as Random Forest and k-Nearest Neighbors (kNN) are explored as optional experiments using sentence embeddings. These models are included to investigate whether nonlinear or distance-based classifiers can capture patterns within embedding space that linear classifiers may miss. However, they are not part of the main experimental progression because logistic regression and SVM are generally stronger baselines for high-dimensional text data.
 
-
-### 2. Binary Classification Models (might have to drop this idea, it will interrupt with the accuracy test on kaggle and it's too extreme; we can talk about it later)
-The binary classification task aims to detect suicidal risk, where posts labeled as Suicidal, Depression, or Anxiety are grouped into a single risk category and compared against Normal posts. This framing aligns with the real-world objective of identifying posts that may require mental health intervention. To systematically evaluate the effect of both feature representation and model complexity, we adopt a progressive model hierarchy. Each stage introduces a controlled improvement so that the contribution of features and classifiers can be examined separately.
-
-| Level | Model | Features |
-|----------|----------------|-------------|
-| **Baseline** | Logistic Regression | TF-IDF |
-| **Model Improvement** | Support Vector Machines (SVM) | TF-IDF |
-| **Feature Improvement** | Logistic Regression | Sentence Embeddings |
-| **Combined** | SVM | Sentence Embeddings |
-| **Advanced** | BERT | raw text |
-| **Optional** | Random Forest / kNN | Sentence Embeddings |
-
-
 ### Model Training Procedure
 - Validation split
 - Cross-validation
 - Hyperparameter tuning using grid search
-- Class weighting
+- Class weighting (due to class imbalance)
   
 ---
 
